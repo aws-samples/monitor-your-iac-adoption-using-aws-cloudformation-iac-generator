@@ -1,0 +1,7 @@
+[MESSAGES CONTROL]
+disable = C0111, R0801, import-error
+max-args = 7
+ignore-paths = service/runtime/python_packages
+
+[FORMAT]
+max-line-length=110

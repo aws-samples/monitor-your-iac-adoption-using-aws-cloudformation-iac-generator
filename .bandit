@@ -1,0 +1,3 @@
+[bandit]
+exclude = service/runtime/python_packages
+skips = B105
