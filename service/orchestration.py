@@ -11,6 +11,7 @@ from aws_cdk import aws_stepfunctions as stepfunctions
 from aws_cdk import aws_stepfunctions_tasks as stepfunctions_tasks
 from constructs import Construct
 
+import cdk_constants as constants
 from service.metric_extraction import LAMBDA_FUNCTION_CODE_ASSET
 from service.metric_extraction import MetricsExtraction
 
@@ -182,7 +183,13 @@ class States(Construct):
                 document=iam.PolicyDocument(
                     statements=[
                         iam.PolicyStatement(
-                            actions=["*"],  # This is required for the resource scan to find resources
+                            actions=[
+                                "cloudformation:StartResourceScan",
+                                "cloudformation:ListTypes",
+                                "cloudformation:GetResource",
+                                "cloudformation:ListResources",
+                                *(constants.IAM_ALL_READ_ONLY_ACTIONS),
+                            ],  # This is required for the resource scan to find resources
                             effect=iam.Effect.ALLOW,
                             resources=["*"],
                         )
