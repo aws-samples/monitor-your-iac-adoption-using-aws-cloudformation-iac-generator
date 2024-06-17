@@ -13,4 +13,5 @@ npm install
 python3 -m pip install -r service/runtime/requirements.txt -r requirements.txt -r requirements-dev.txt
 
 # Install runtime dependencies for lambda layer creation
+rm -rf service/runtime/python_packages
 python3 -m pip install -r service/runtime/requirements.txt --target service/runtime/python_packages/python/
